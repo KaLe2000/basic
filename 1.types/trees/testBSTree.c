@@ -52,10 +52,33 @@ void testFindNodeBSTree() {
     clearTree(bsTree);
 }
 
+void testGetCountLists() {
+    int assertVal = 4;
+    node* bsTree = createNode(20);
+
+    bsTree->left = createNode(10);
+    bsTree->left->left = createNode(5);
+    bsTree->left->right = createNode(15);
+
+    bsTree->right = createNode(30);
+    bsTree->right->left = createNode(25);
+    bsTree->right->right = createNode(35);
+
+    int result = getCountLists(bsTree);
+
+    if (result == assertVal)
+    {
+        printf("testGetCountLists success\n");
+    } else {
+        printf("testGetCountLists failed\n");
+    }
+}
+
 int main() {
     testCreateNode();
     // testClearTree(); // see todo clearTree()
     testFindNodeBSTree();
+    testGetCountLists();
 
     return EXIT_SUCCESS;
 }

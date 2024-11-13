@@ -62,6 +62,16 @@ node* findNodeBSTree(node* root, int value) {
     return root;
 }
 
+// Функция подсчёта листьев дерева, где лист это нода не имеющая дочерних нод
+int getCountLists(node* root) {
+    if (root->left == NULL && root->right == NULL)
+    {
+        return 1;
+    }
+
+    return getCountLists(root->left) + getCountLists(root->right);
+}
+
 // Функция для обхода дерева в симметричном порядке
 // аргументом функции является указатель с типом struct Node
 void inorderTraversal(node* root) {
