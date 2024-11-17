@@ -28,7 +28,7 @@ node* createNode(int value) {
 
 // Геттер высоты узла
 int height(node* root) {
-    return root
+    return root != NULL
     ? root->height
     : 0;
 }
@@ -36,7 +36,7 @@ int height(node* root) {
 // Функция корректировки высоты заданного узла
 // разница между высотами левого и правого поддерева не может быть больше 1 
 void updateHeight(node* root) {
-    if (root) {
+    if (root != NULL) {
         root->height = 1 + (
             height(root->left) > height(root->right)
                 ? height(root->left)
@@ -76,7 +76,9 @@ node* leftRotate(node* x) {
 }
 
 int getBalance(node* root) {
-    return root ? height(root->left) - height(root->right) : 0;
+    return root != NULL
+    ? height(root->left) - height(root->right)
+    : 0;
 }
 
 node* balance(node* root) {
@@ -128,4 +130,45 @@ node* insert(node* root, int value) {
 
     // Балансируем дерево
     return balance(root);
+}
+
+node* findNode(node* root, int value) {
+    if (root == NULL)
+    {
+        return NULL;
+    }
+
+    if (value < root->value)
+    {
+        return findNode(root->left, value);
+    }
+
+    if (value > root->value)
+    {
+        return findNode(root->right, value);
+    }
+
+    return root;
+}
+
+// Функция для обхода дерева в симметричном порядке
+// аргументом функции является указатель с типом struct Node
+void inorderTraversal(node* root) {
+    if (root != NULL) {
+        inorderTraversal(root->left);
+        printf("val:%d, height:%d\n", root->value, root->height);
+        inorderTraversal(root->right);
+    }
+}
+
+
+// Функция для освобождения памяти дерева (рекурсивно)
+// todo для тестирования сетить в указатель NULL
+void clearTree(node* root) {
+    if (root != NULL) {
+        clearTree(root->left);
+        clearTree(root->right);
+        free(root);
+        // root = NULL;
+    }
 }
