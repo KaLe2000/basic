@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int getValByIndex(int* array, int index) {
-    if (array != NULL && (sizeof(array[0]) / sizeof(int)) >= index)
+int getValByIndex(int* array, int size, int index) {
+    if (array != NULL && size >= index)
     {
         return array[index];
     }
@@ -43,10 +43,4 @@ void insertElement(int **array, int *size, int index, int value) {
 
     (*array)[index] = value;
     (*size)++;
-}
-
-
-int main()
-{
-    return 0;
 }
