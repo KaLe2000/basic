@@ -11,7 +11,6 @@ void testGetValByIndex() {
     } else {
         printf("testGetValByIndex is failed\n");
     }
-    return;
 }
 
 void testGetIndexByVal() {
