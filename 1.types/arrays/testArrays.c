@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "arrays.c"
 
 void testGetValByIndex() {
@@ -14,7 +15,15 @@ void testGetValByIndex() {
 }
 
 void testGetIndexByVal() {
-    return;
+    int array[] = {1,2,3,4,5};
+    int res = getIndexByVal(array, 5, 2);
+
+    if (res == 1)
+    {
+        printf("testGetIndexByVal is success\n");
+    } else {
+        printf("testGetIndexByVal is failed\n");
+    }
 }
 
 void testInsertElement() {
